@@ -7,550 +7,665 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:#FAFAF8;
-    --paper-dim:#F1F1EE;
-    --ink:#14171C;
-    --ink-soft:#4A4F58;
-    --muted:#8A8F98;
-    --cobalt:#3457D5;
-    --cobalt-tint:#EAEFFF;
-    --line:#E4E4E0;
-    --radius:10px;
-    --maxw:1080px;
+  :root {
+    --bg: #f6f1ea;
+    --panel: #fffdf9;
+    --panel-soft: #f3ede5;
+    --card: #ffffff;
+    --text: #1f1d1b;
+    --muted: #5d5752;
+    --line: #e7dfd3;
+    --accent: #8d6e4d;
+    --accent-deep: #5f432d;
+    --shadow: 0 20px 50px rgba(35, 25, 15, 0.08);
+    --radius: 22px;
+    --max: 1180px;
   }
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    -webkit-font-smoothing:antialiased;
-    line-height:1.55;
-  }
-  a{color:inherit;}
-  h1,h2,h3{
-    font-family:'Space Grotesk',sans-serif;
-    margin:0;
-    letter-spacing:-0.02em;
-  }
-  .mono{
-    font-family:'JetBrains Mono',monospace;
-  }
-  .wrap{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:0 28px;
-  }
-  :focus-visible{
-    outline:2px solid var(--cobalt);
-    outline-offset:3px;
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    background: linear-gradient(180deg, #f9f5f2 0%, #f4efe9 100%);
+    color: var(--text);
+    line-height: 1.6;
   }
 
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:rgba(250,250,248,0.85);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav.wrap{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:64px;
-  }
-  .logo{
-    font-family:'JetBrains Mono',monospace;
-    font-weight:500;
-    font-size:15px;
-  }
-  .logo .dot{color:var(--cobalt);}
-  .navlinks{
-    display:flex;
-    gap:28px;
-    list-style:none;
-    margin:0;
-    padding:0;
-    font-size:14px;
-    font-weight:500;
-  }
-  .navlinks a{
-    text-decoration:none;
-    color:var(--ink-soft);
-    transition:color .15s ease;
-  }
-  .navlinks a:hover{color:var(--cobalt);}
-  .navlinks{display:none;}
-  @media (min-width:720px){
-    .navlinks{display:flex;}
+  img, video { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    width: min(var(--max), calc(100% - 32px));
+    margin: 0 auto;
   }
 
-  /* ---------- HERO ---------- */
-  .hero{
-    padding:88px 0 64px;
-    display:grid;
-    gap:48px;
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    background: rgba(246, 241, 234, 0.8);
+    border-bottom: 1px solid rgba(120, 106, 92, 0.12);
   }
-  @media (min-width:860px){
-    .hero{
-      grid-template-columns:1.1fr 0.9fr;
-      align-items:center;
-      padding:120px 0 88px;
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+  }
+
+  .brand {
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    font-size: 1.1rem;
+  }
+
+  .brand span {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .hero {
+    padding: 72px 0 38px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 46px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    padding: 10px 14px;
+    background: rgba(141, 110, 77, 0.1);
+    border: 1px solid rgba(141, 110, 77, 0.2);
+    border-radius: 999px;
+    color: var(--accent-deep);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 20px 0 18px;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+    font-weight: 800;
+  }
+
+  h1 .accent {
+    color: var(--accent);
+  }
+
+  .lead {
+    color: var(--muted);
+    font-size: 1.06rem;
+    max-width: 620px;
+    margin-bottom: 28px;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 14px;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+
+  .hero-visual {
+    background: linear-gradient(135deg, #efe2d1 0%, #f7f2ea 100%);
+    border: 1px solid rgba(93, 87, 82, 0.12);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    object-fit: cover;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .stat {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px 16px;
+  }
+
+  .stat strong {
+    display: block;
+    font-size: 1.8rem;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    margin-bottom: 6px;
+  }
+
+  .stat span {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  section {
+    padding: 88px 0;
+  }
+
+  .section-label {
+    color: var(--accent-deep);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+    margin: 0 0 18px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  .about-copy {
+    color: var(--muted);
+    font-size: 1.04rem;
+  }
+
+  .about-copy p { margin: 0 0 18px; }
+
+  .about-card {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .badge {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 0.83rem;
+    color: var(--muted);
+  }
+
+  .showcase {
+    background: rgba(255,255,255,0.38);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .media-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .media-card img,
+  .media-card video {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .media-info {
+    padding: 18px 20px 22px;
+  }
+
+  .media-info h3 {
+    margin: 0 0 8px;
+    font-size: 1.3rem;
+    letter-spacing: -0.04em;
+  }
+
+  .media-info p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 24px;
+  }
+
+  .project-card {
+    background: rgba(255,255,255,0.62);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(40, 28, 18, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 34px rgba(40, 28, 18, 0.08);
+  }
+
+  .project-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .project-content {
+    padding: 20px 18px 22px;
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 10px;
+  }
+
+  .project-content h3 {
+    font-size: 1.35rem;
+    letter-spacing: -0.04em;
+    margin: 0 0 10px;
+  }
+
+  .project-content p {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 0.97rem;
+  }
+
+  .tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tool {
+    background: var(--panel-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--muted);
+    padding: 7px 10px;
+  }
+
+  .contact {
+    padding-top: 24px;
+    padding-bottom: 100px;
+  }
+
+  .contact-box {
+    background: linear-gradient(135deg, #1f1d1b 0%, #2f2a26 100%);
+    color: #fff;
+    border-radius: 28px;
+    padding: 36px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 26px;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-box h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    max-width: 420px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .contact-links a {
+    color: #e7d9c8;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(231, 217, 200, 0.3);
+    width: fit-content;
+  }
+
+  footer {
+    padding: 14px 0 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid,
+    .about-grid,
+    .showcase-grid,
+    .projects-grid,
+    .contact-box {
+      grid-template-columns: 1fr;
+      display: grid;
+    }
+
+    .hero-visual img {
+      min-height: 380px;
+    }
+
+    .contact-box {
+      padding: 26px 22px;
     }
   }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:12.5px;
-    color:var(--cobalt);
-    background:var(--cobalt-tint);
-    padding:6px 12px;
-    border-radius:100px;
-    margin-bottom:22px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:6px;height:6px;
-    border-radius:50%;
-    background:var(--cobalt);
-    display:inline-block;
-  }
-  .hero h1{
-    font-size:clamp(34px,5.4vw,56px);
-    font-weight:600;
-    line-height:1.06;
-  }
-  .hero h1 em{
-    font-style:normal;
-    color:var(--cobalt);
-  }
-  .hero p.lede{
-    margin-top:20px;
-    font-size:17px;
-    color:var(--ink-soft);
-    max-width:46ch;
-  }
-  .hero-cta{
-    margin-top:32px;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-  .btn{
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:14.5px;
-    padding:12px 22px;
-    border-radius:8px;
-    text-decoration:none;
-    display:inline-block;
-    transition:transform .15s ease, background .15s ease;
-  }
-  .btn-primary{
-    background:var(--ink);
-    color:var(--paper);
-  }
-  .btn-primary:hover{background:var(--cobalt); transform:translateY(-1px);}
-  .btn-ghost{
-    border:1px solid var(--line);
-    color:var(--ink);
-  }
-  .btn-ghost:hover{border-color:var(--cobalt); color:var(--cobalt);}
 
-  /* signature graphic: loss curve */
-  .curve-card{
-    background:var(--ink);
-    border-radius:16px;
-    padding:26px 22px 20px;
-    position:relative;
-    overflow:hidden;
-  }
-  .curve-card .label{
-    font-family:'JetBrains Mono',monospace;
-    color:#8FA6FF;
-    font-size:12px;
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:14px;
-  }
-  .curve-card svg{width:100%; height:auto; display:block;}
-  .curve-path{
-    stroke:#7C98FF;
-    stroke-width:2.4;
-    fill:none;
-    stroke-dasharray:520;
-    stroke-dashoffset:520;
-    animation:draw 2.2s ease forwards .3s;
-  }
-  .curve-path.acc{
-    stroke:#4EE1A0;
-    stroke-dasharray:520;
-    stroke-dashoffset:520;
-    animation:draw 2.2s ease forwards .6s;
-  }
-  .curve-grid line{stroke:#2A2E38; stroke-width:1;}
-  @keyframes draw{ to{ stroke-dashoffset:0; } }
-  .curve-legend{
-    display:flex;
-    gap:18px;
-    margin-top:10px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;
-    color:#9AA1AE;
-  }
-  .curve-legend span{display:flex; align-items:center; gap:6px;}
-  .swatch{width:9px;height:9px;border-radius:2px;display:inline-block;}
-  @media (prefers-reduced-motion:reduce){
-    .curve-path, .curve-path.acc{animation:none; stroke-dashoffset:0;}
-  }
-
-  /* ---------- SECTION shared ---------- */
-  section{padding:72px 0;}
-  .section-head{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    margin-bottom:36px;
-    gap:16px;
-    flex-wrap:wrap;
-  }
-  .section-num{
-    font-family:'JetBrains Mono',monospace;
-    color:var(--muted);
-    font-size:13px;
-  }
-  .section-head h2{
-    font-size:clamp(24px,3.4vw,32px);
-    font-weight:600;
-  }
-
-  /* ---------- ABOUT ---------- */
-  .about{
-    border-top:1px solid var(--line);
-  }
-  .about-grid{
-    display:grid;
-    gap:32px;
-  }
-  @media (min-width:780px){
-    .about-grid{grid-template-columns:1fr 1fr;}
-  }
-  .about p{color:var(--ink-soft); font-size:16px;}
-  .stack-list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-top:18px;
-  }
-  .chip{
-    font-family:'JetBrains Mono',monospace;
-    font-size:12.5px;
-    padding:7px 12px;
-    background:var(--paper-dim);
-    border:1px solid var(--line);
-    border-radius:7px;
-    color:var(--ink-soft);
-  }
-
-  /* ---------- PROJECTS ---------- */
-  .projects{
-    border-top:1px solid var(--line);
-  }
-  .proj-grid{
-    display:grid;
-    gap:20px;
-    grid-template-columns:1fr;
-  }
-  @media (min-width:720px){
-    .proj-grid{grid-template-columns:1fr 1fr;}
-  }
-  .card{
-    background:var(--paper-dim);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:26px;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    transition:border-color .15s ease, transform .15s ease;
-  }
-  .card:hover{
-    border-color:var(--cobalt);
-    transform:translateY(-2px);
-  }
-  .card-tag{
-    font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;
-    color:var(--cobalt);
-    text-transform:uppercase;
-    letter-spacing:.04em;
-  }
-  .card h3{font-size:19px; font-weight:600;}
-  .card p{color:var(--ink-soft); font-size:14.5px; margin:0;}
-  .card-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:auto;
-    padding-top:6px;
-  }
-  .card-meta span{
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    color:var(--muted);
-    background:var(--paper);
-    border:1px solid var(--line);
-    padding:4px 9px;
-    border-radius:5px;
-  }
-
-  /* ---------- CONTACT ---------- */
-  .contact{
-    border-top:1px solid var(--line);
-    text-align:left;
-  }
-  .contact-box{
-    background:var(--ink);
-    color:var(--paper);
-    border-radius:16px;
-    padding:52px 40px;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-  }
-  @media (min-width:720px){
-    .contact-box{
-      flex-direction:row;
-      align-items:center;
-      justify-content:space-between;
+  @media (max-width: 640px) {
+    .nav-links {
+      gap: 12px;
+      font-size: 0.8rem;
     }
-  }
-  .contact-box h2{
-    font-size:clamp(24px,3.6vw,32px);
-    max-width:14ch;
-  }
-  .contact-links{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .contact-links a{
-    font-family:'JetBrains Mono',monospace;
-    font-size:14.5px;
-    text-decoration:none;
-    color:#B9C6FF;
-    border-bottom:1px solid transparent;
-    width:fit-content;
-  }
-  .contact-links a:hover{border-color:#B9C6FF;}
 
-  footer{
-    padding:32px 0 48px;
-    color:var(--muted);
-    font-size:13px;
-    font-family:'JetBrains Mono',monospace;
-    text-align:center;
+    .stats {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
 <body>
-
-<header>
-  <nav class="wrap">
-    <div class="logo">Muhammad Ali Butt<span class="dot">.</span>ml</div>
-    <ul class="navlinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-  <section class="hero wrap">
-    <div>
-      <div class="eyebrow">Available for internships & collabs</div>
-      <h1>Building systems<br>that <em>learn.</em></h1>
-      <p class="lede">I'm Muhammad ALi Butt — a machine learning &amp; software engineer working across classification pipelines, computer vision, and applied AI tooling. I care about models that are correct, not just accurate on paper.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#projects">View projects</a>
-        <a class="btn btn-ghost" href="#contact">Get in touch</a>
-      </div>
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="brand">Muhammad Ali Butt<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#showcase">Showcase</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
+  </header>
 
-    <div class="curve-card">
-      <div class="label"><span>training_log.py</span><span>epoch 40/40</span></div>
-      <svg viewBox="0 0 320 150">
-        <g class="curve-grid">
-          <line x1="0" y1="30" x2="320" y2="30"></line>
-          <line x1="0" y1="75" x2="320" y2="75"></line>
-          <line x1="0" y1="120" x2="320" y2="120"></line>
-        </g>
-        <path class="curve-path" d="M0,20 C 40,25 60,80 90,95 C 120,108 150,112 180,116 C 210,119 250,121 320,123"></path>
-        <path class="curve-path acc" d="M0,135 C 40,128 70,60 100,45 C 130,32 160,26 200,22 C 240,19 280,16 320,14"></path>
-      </svg>
-      <div class="curve-legend">
-        <span><i class="swatch" style="background:#7C98FF"></i>loss</span>
-        <span><i class="swatch" style="background:#4EE1A0"></i>val_accuracy</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="wrap about-grid">
-      <div>
-        <div class="section-num">01 / about</div>
-        <h2 style="margin-top:10px;">A bit about how I work</h2>
-      </div>
-      <div>
-        <p>I spend most of my time in Python — building, breaking, and rebuilding ML pipelines until the metrics actually mean something. Recent work has focused on catching data leakage before it wrecks a model, and on shipping small, well-tested tools rather than one-off notebooks.</p>
-        <p style="margin-top:14px;">Outside of ML I build with whatever gets the job done: React front-ends, local LLM tooling, and the occasional AI-vs-AI chess engine, just to keep the fundamentals sharp.</p>
-        <div class="stack-list">
-          <span class="chip">Python</span>
-          <span class="chip">PyTorch</span>
-          <span class="chip">scikit-learn</span>
-          <span class="chip">Pandas</span>
-          <span class="chip">SQL</span>
-          <span class="chip">React</span>
-          <span class="chip">Data Structures &amp; Algorithms</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="projects" id="projects">
-    <div class="wrap">
-      <div class="section-head">
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
         <div>
-          <div class="section-num">02 / projects</div>
-          <h2 style="margin-top:10px;">Selected work</h2>
+          <div class="eyebrow">AI &amp; software builder</div>
+          <h1>Turning ideas into <span class="accent">real impact</span>.</h1>
+          <p class="lead">
+            I’m Muhammad Ali Butt — a creative developer and AI enthusiast focused on building practical solutions,
+            intelligent systems, and polished digital experiences that solve real problems.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">View My Work</a>
+            <a class="btn btn-secondary" href="#contact">Let’s Connect</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>6+</strong>
+              <span>trained projects</span>
+            </div>
+            <div class="stat">
+              <strong>4</strong>
+              <span>core AI domains</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>curiosity-driven</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Creative team working together" />
         </div>
       </div>
+    </section>
 
-      <div class="proj-grid">
-        <div class="card">
-            <span class="card-tag">Machine Learning</span>
-            <h3>Disease Prediction from Medical Data</h3>
-            <p>A machine learning model that predicts the likelihood of heart disease based on patient health metrics like age, cholesterol, and blood pressure. Trained on real-world clinical data to support early risk detection.</p>
-            <div class="card-meta">
-              <span>Python</span>
-              <span>Scikit-learn</span>
-              <span>XGBoost</span>
-            </div>
-          </div>
-           <div class="card">
-            <span class="card-tag">Machine Learning</span>
-            <h3>Handwritten Character Recognition</h3>
-            <p>A CNN trained on EMNIST that recognizes handwritten sentences drawn in real time, with custom segmentation to split a sentence into individual characters before classification.</p>
-            <div class="card-meta">
-              <span>Python</span>
-              <span>PyTorch</span>
-              <span>Tkinter</span>
-            </div>
-          </div>
-           <div class="card">
-            <span class="card-tag">Machine Learning</span>
-            <h3>Credit Scoring Model</h3>
-            <p>An end-to-end ML pipeline that predicts loan default risk from applicant data, comparing three tuned classifiers and deploying whichever one actually wins on cross-validated ROC-AUC.</p>
-            <div class="card-meta">
-              <span>Python</span>
-              <span>Scikit-learn</span>
-              <span>XGBoost</span>
-            </div>
-          </div>
-          <div class="card">
-            <span class="card-tag">C++</span>
-            <h3>Multi Client Chat Application</h3>
-            <p>A real-time chat application that supports multiple clients connecting to a central server, implemented with C++ and utilizing socket programming for communication.</p>
-            <div class="card-meta">
-              <span>C++</span>
-              <span>Socket Programming</span>
-              <span>Threading</span>
-            </div>
-          </div>
-            <div class="card">
-            <span class="card-tag">Python</span>
-            <h3>File Management System</h3>
-            <p>A Python-based file management system that allows users to organize, search, and manipulate files and directories with a user-friendly interface.</p>
-            <div class="card-meta">
-              <span>Python</span>
-              <span>Tkinter</span>
-              <span>OS Module</span>
-            </div>
-          </div>
-           <div class="card">
-            <span class="card-tag">Machine Learning</span>
-            <h3>Emotional Speech Recognition</h3>
-            <p>A Python-based emotional speech recognition system that classifies spoken sentences into different emotional categories using deep learning techniques.</p>
-            <div class="card-meta">
-              <span>Python</span>
-              <span>TensorFlow</span>
-              <span>Librosa</span>
-            </div>
-          </div>
-          <div class="card">
-            <span class="card-tag">Machine Learning</span>
-            <h3>Cats and Dogs Image Classification</h3>
-            <p>A Python-based image classification system that distinguishes between cat and dog images using convolutional neural networks.</p>
-            <div class="card-meta">
-              <span>Python</span>
-              <span>TensorFlow</span>
-              <span>OpenCVs</span>
-            </div>
-          </div>
-           <div class="card">
-            <span class="card-tag">Machine Learning</span>
-            <h3>Dynamic Pricing</h3>
-            <p>A Python-based dynamic pricing system that adjusts prices in real-time based on market conditions and demand using machine learning algorithms.</p>
-            <div class="card-meta">
-              <span>Python</span>
-              <span>TensorFlow</span>
-              <span>Scikit-learn</span>
-            </div>
-          </div>
-        <!--
-          Add your project cards here. Copy this block for each project:
+    <section id="about">
+      <div class="wrap about-grid">
+        <div>
+          <div class="section-label">About</div>
+          <h2>Building useful things with data, design, and code.</h2>
+        </div>
 
-          <div class="card">
-            <span class="card-tag">Category</span>
-            <h3>Project Title</h3>
-            <p>One or two sentences describing what it does and what makes it interesting.</p>
-            <div class="card-meta">
-              <span>Tech 1</span>
-              <span>Tech 2</span>
-              <span>Tech 3</span>
-            </div>
-          </div>
-        -->
-      </div>
-    </div>
-  </section>
+        <div class="about-copy">
+          <p>
+            I enjoy designing and developing systems that blend machine learning, software engineering, and user-focused design.
+            My work ranges from predictive models and image recognition to practical applications in chat systems, automation,
+            and data-driven decision tools.
+          </p>
+          <p>
+            I’m motivated by projects that are not only technically solid, but also meaningful, clean, and easy to use.
+            I like turning a rough idea into something polished, useful, and memorable.
+          </p>
 
-  <section class="contact" id="contact">
-    <div class="wrap">
-      <div class="section-num">03 / contact</div>
-      <div class="contact-box" style="margin-top:22px;">
-        <h2>Let's build something that learns well.</h2>
-        <div class="contact-links">
-          <a href="mailto:your.alibutt4223@gmail.com">alibutt4223@gmail.com</a>
-          <a href="https://github.com/muhammadalibutt20?tab=repositories" target="_blank" rel="noopener">https://github.com/muhammadalibutt20?tab=repositories</a>
-          <a href="https://www.linkedin.com/in/muhammad-ali-butt-a22364282" target="_blank" rel="noopener">www.linkedin.com/in/muhammad-ali-butt-a22364282</a>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">AI Models</span>
+            <span class="badge">Computer Vision</span>
+            <span class="badge">Data Analysis</span>
+            <span class="badge">Software Design</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer>
-  © 2026 Muhammad ALi Butt — built with intent
-</footer>
+    <section class="showcase" id="showcase">
+      <div class="wrap">
+        <div class="section-label">Showcase</div>
+        <h2>Project visuals and demos</h2>
 
+        <div class="showcase-grid">
+          <div class="media-card">
+            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80" alt="Healthcare AI dashboard preview" />
+            <div class="media-info">
+              <h3>Healthcare Prediction Demo</h3>
+              <p>AI-powered model designed to support early decision-making through predictive insights.</p>
+            </div>
+          </div>
+
+          <div class="media-card">
+            <video controls poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div class="media-info">
+              <h3>Project Walkthrough</h3>
+              <p>Use this space to show a short demo video of your trained project or model workflow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-label">Portfolio</div>
+        <h2>Featured trained projects</h2>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" alt="Heart disease prediction project" />
+            <div class="project-content">
+              <span class="project-tag">Healthcare AI</span>
+              <h3>Heart Disease Prediction</h3>
+              <p>Built an ML model to estimate disease risk using clinical health metrics and patient data.</p>
+              <div class="tool-row">
+                <span class="tool">Python</span>
+                <span class="tool">Scikit-learn</span>
+                <span class="tool">XGBoost</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Handwritten character recognition project" />
+            <div class="project-content">
+              <span class="project-tag">Computer Vision</span>
+              <h3>Handwritten Recognition</h3>
+              <p>Designed a CNN-based system to recognize characters and handwritten text from user input.</p>
+              <div class="tool-row">
+                <span class="tool">PyTorch</span>
+                <span class="tool">CNN</span>
+                <span class="tool">Tkinter</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Risk model project" />
+            <div class="project-content">
+              <span class="project-tag">Risk Modeling</span>
+              <h3>Credit Scoring Model</h3>
+              <p>Evaluated multiple classifiers to predict credit risk and compare model performance using real-world data.</p>
+              <div class="tool-row">
+                <span class="tool">ML Pipelines</span>
+                <span class="tool">Pandas</span>
+                <span class="tool">Model Eval</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Speech recognition project" />
+            <div class="project-content">
+              <span class="project-tag">Audio AI</span>
+              <h3>Emotional Speech Recognition</h3>
+              <p>Classified emotional tones from speech using deep learning and audio feature extraction.</p>
+              <div class="tool-row">
+                <span class="tool">Python</span>
+                <span class="tool">TensorFlow</span>
+                <span class="tool">Librosa</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Animals classification project" />
+            <div class="project-content">
+              <span class="project-tag">Deep Learning</span>
+              <h3>Cats &amp; Dogs Classifier</h3>
+              <p>Trained a convolutional neural network to distinguish between animal images with strong visual accuracy.</p>
+              <div class="tool-row">
+                <span class="tool">TensorFlow</span>
+                <span class="tool">OpenCV</span>
+                <span class="tool">CNN</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=80" alt="Dynamic pricing project" />
+            <div class="project-content">
+              <span class="project-tag">Business AI</span>
+              <h3>Dynamic Pricing</h3>
+              <p>Explored pricing optimization strategies using market and demand signals to build adaptive decision logic.</p>
+              <div class="tool-row">
+                <span class="tool">Forecasting</span>
+                <span class="tool">Python</span>
+                <span class="tool">Analytics</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <h2>Let’s build something meaningful together.</h2>
+          <div class="contact-links">
+            <a href="mailto:alibutt4223@gmail.com">alibutt4223@gmail.com</a>
+            <a href="https://github.com/muhammadalibutt20?tab=repositories" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/muhammad-ali-butt-a22364282" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Muhammad Ali Butt — Portfolio
+  </footer>
 </body>
 </html>
